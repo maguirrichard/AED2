@@ -1,0 +1,60 @@
+class ATV0 
+{
+  public static boolean equalsMetod (String s1, String s2)
+  {
+     public static boolean equalsMetod (String s1, String s2)
+  {
+     boolean resp = false;
+     if(s1.length() == s2.length())
+     {//Inicio IF
+        //Faz a passagem de char em char na string
+        for(int i = 0; i < s1.length(); i = i+1)
+        {//Inicio FOR
+	   //Faz a comparação entre chars
+           if(s1.charAt(i) == s2.charAt(i))
+           {//Inicio IF2
+             resp = true;
+           }else{ 
+	     resp = false;
+	     i = s1.length();
+           }//Fim IF2 
+        }//Fim FOR
+     }//Fim IF
+     return(resp);
+  }//Fim equalsMetod
+  public static int contMaisc (String s)
+  {
+     int cont = 0;
+     //Faz a passagem de char em char na string
+     for(int i = 0; i < s.length(); i = i+1)
+     {//Inicio FOR
+        if(isMaisc(s.charAt(i)))
+        {//Inicio IF
+          cont = cont+1;
+        }//Fim IF 
+     }//Fim FOR
+     return(cont);
+  }//Fim contMaisc
+  public static boolean isMaisc (char c)
+  {
+     boolean resp = false;
+     //Verifica se o char é maiúsculo
+     if(c >= 'A' && c <= 'Z')
+     {//Inicio IF
+        resp = true;
+     }//FIm IF
+     return(resp);
+  }//Fim isMaisc
+  public static void main(String[] args)
+  {
+     //Ler o arquivo texto
+     String str = MyIO.readLine();
+
+     while(!equalsMetod(str, "FIM"))
+     {// Inicio WHILE 
+         MyIO.println(contMaisc(str));
+         str = MyIO.readLine();
+     }//Fim WHILE
+
+  } // Fim main()
+} // Fim class
