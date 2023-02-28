@@ -1,0 +1,17 @@
+class Teste
+{
+  
+  public static void main(String[] args)
+  {
+	String tmp = "<td scope="+'"'+"row"+'"'+" style="+'"'+"vertical-align: top; text-align: left; width: 9em; font-weight:bold; background-color:transparent;"+'"'+">Nacionalidade</td>";
+
+	MyIO.println(tmp);
+  }
+}
+
+/*
+<td scope="row" style="vertical-align: top; text-align: left; width: 9em; font-weight:bold; background-color:transparent;">Nacionalidade</td>
+
+
+<td scope="row" style="vertical-align: top; text-align: left; width: 9em; font-weight:bold; background-color:transparent;">Nacionalidade</td>
+ */
