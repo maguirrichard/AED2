@@ -1,0 +1,233 @@
+import java.io.*;
+import java.util.*;
+import java.lang.*;
+class Municipio
+{
+   
+  String[] array;
+   
+  //Construtor Vazio
+  public Municipio()
+  {
+     array = new String[16];
+  }//Fim Construtor Vazio
+ 
+  //Construtor com Parametro
+  public Municipio(int tamanho)
+  {
+     array = new String[tamanho]; 
+  }//Fim Construtor com Parametro
+ 
+  public static String pegaDados (String nomearq, int j, int k, int n)
+  {
+     Arq.openRead(nomearq, "ISO-8859-1");
+     String help = " ";
+     String leitor = " ";
+     for(int i = 1; i <= j; i++)
+     {//Inicio FOR
+       leitor = Arq.readLine();  
+     }//Fim FOR
+      
+     //MyIO.println(leitor);
+      
+     while((int)leitor.charAt(k) != n)
+     {//Inicio WHILE
+        help = help+leitor.charAt(k);
+        k++;
+     }//Fim WHILE
+     Arq.close();
+     return(help);
+  }
+   
+  public static String acharUf (String nomearq, int j)
+  {
+     Arq.openRead(nomearq, "ISO-8859-1");
+     String help = " ";
+     String leitor = " ";
+     for(int i = 1; i <= j; i++)
+     {//Inicio FOR
+       leitor = Arq.readLine();  
+     }//Fim FOR
+      
+     //MyIO.println(leitor);
+      
+     for(int i = 6; i<8; i++)
+     {//Inicio FOR
+        help = help+leitor.charAt(leitor.length()-i);
+     }//Fim FOR
+     Arq.close();
+     
+     return(invertPalavra(help));
+  }
+ 
+  public static String invertPalavra (String s)
+  {
+     String invertida = "";
+     int j = s.length();
+     //Faz a passagem de char em char na string
+     for(int i=0; i<j; i = i+1)
+     {//Inicio FOR
+        invertida = invertida + s.charAt(j-(i+1)); 
+     }//Fim FOR
+     return(invertida);
+  }// Fim invertPalavra
+
+  public static String removeVirg (String str)
+  {
+     str = str.replace(',','.');
+     return(str);
+  }// Fim invertPalavra
+
+  public static void ler (String nomearq)
+  {
+     String[] array = new String[15];
+     int linha = 43; 
+     int caracter = 64;
+     int especial = 45;
+     String cod = " ";
+ 
+     for(int i = 11; i<14; i++)
+     {
+        cod = cod+nomearq.charAt(i);
+     }     
+     
+     //Sring nome
+     array[0] = pegaDados(nomearq, linha, caracter, especial).trim();
+     //MyIO.println(array[0]);
+     
+     linha = 43;
+     caracter = 77;
+     especial = 60;
+      
+     //String uf
+     array[1] = acharUf(nomearq, linha).trim();
+     //MyIO.println(array[1]);
+    
+     //int cod
+     array[2] = cod.trim();
+     //MyIO.println(array[2]);
+      
+     linha = 50;
+     caracter = 27;
+      
+     //String latitude
+     array[3] = pegaDados(nomearq, linha, caracter, especial).trim();
+     //MyIO.println(array[3]);
+      
+     linha = 52;
+     caracter = 27;
+     especial = 60;
+      
+     //String longitude
+     array[4] = pegaDados(nomearq, linha, caracter, especial).trim();
+     //MyIO.println(array[4]);
+      
+     linha = 54;
+     caracter = 27;
+     especial = 109;
+      
+     //int altitude
+     array[5] = pegaDados(nomearq, linha, caracter, especial).trim();
+     //MyIO.println(array[5]);
+      
+     linha = 56;
+     caracter = 27;
+     especial = 60;
+      
+     //String periodo
+     array[6] = pegaDados(nomearq, linha, caracter, especial).trim();
+     //MyIO.println(array[6]);
+      
+     linha = 271;
+     caracter = 40;
+     especial = 38;
+      
+     //double medtemp
+     array[7] = pegaDados(nomearq, linha, caracter, especial).trim();
+     //MyIO.println(array[7]);
+ 
+     linha = 272;
+     caracter = 40;
+     especial = 38;
+      
+     //int precip
+     array[8] = pegaDados(nomearq, linha, caracter, especial).trim();
+     //MyIO.println(array[8]);
+ 
+     linha = 273;
+     caracter = 40;
+     especial = 38;
+      
+     //int etp
+     array[9] = pegaDados(nomearq, linha, caracter, especial).trim();
+     //MyIO.println(array[9]);
+ 
+     linha = 274;
+     caracter = 40;
+     especial = 38;
+      
+     //int armaz
+     array[10] = pegaDados(nomearq, linha, caracter, especial).trim();
+     //MyIO.println(array[10]);
+ 
+     linha = 275;
+     caracter = 40;
+     especial = 38;
+      
+     //int etr
+     array[11] = pegaDados(nomearq, linha, caracter, especial).trim();
+     //MyIO.println(array[11]);
+ 
+     linha = 276;
+     caracter = 40;
+     especial = 38;
+      
+     //int deficiencia
+     array[12] = pegaDados(nomearq, linha, caracter, especial).trim();
+     //MyIO.println(array[12]);
+ 
+     linha = 277;
+     caracter = 40;
+     especial = 38;
+      
+     //int excedente
+     array[13] = pegaDados(nomearq, linha, caracter, especial).trim();
+     //MyIO.println(array[13]);
+ 
+     linha = 283;
+     caracter = 45;
+     especial = 60;
+      
+     //String fonte
+     array[14] = pegaDados(nomearq, linha, caracter, especial).trim();
+     //MyIO.println(array[14]);
+     
+     
+     /*MyIO.println(array[0]+"-"+array[1] + " (" + Integer.parseInt(array[2]) + ") (" + array[3]                  + "/" + array[4] + "/" + array[5] + "/" + array[6] + ") (" +                    removeVirg(array[7]) + "/" + array[8] + "/" + array[9] + "/" + array[10] +                  "/" + array[11] + "/" + array[12] + "/" + array[13] + ") (" +                   array[14]+ ")" ); 
+     return(array);*/
+     imprimir(array);
+  }//Fim ler
+
+  public static void imprimir(String [] array)
+  {
+   MyIO.println(array[0]+"-"+array[1] + " (" + Integer.parseInt(array[2]) + ") (" + array[3]                  + "/" + array[4] + "/" + array[5] + "/" + array[6] + ") (" +                    removeVirg(array[7]) + "/" + array[8] + "/" + array[9] + "/" + array[10] +                  "/" + array[11] + "/" + array[12] + "/" + array[13] + ") (" +                   array[14]+ ")" );
+  }//Fim imprimir
+ 
+ 
+ 
+}//Fim CLASS Municipio
+ 
+ 
+/* ====== CLASSE ATV1 ====== */
+class ATV1 
+{
+  public static void main(String[] args)
+  {
+     String str = MyIO.readLine();
+     while(!str.equals("FIM"))
+     {//Inicio WHILE
+     Municipio.ler(str);
+     str = MyIO.readLine();
+     }//Fim WHILE     
+  }// Fim MAIN
+}//Fim CLASS ATV1
