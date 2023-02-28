@@ -1,0 +1,49 @@
+class ATV3 
+{
+  public static boolean equalsMetod (String s1, String s2)
+  {
+     boolean resp = false;
+     if(s1.length() == s2.length())
+     {//Inicio IF
+        //Faz a contagem de maiuculas na string
+        for(int i = 0; i < s1.length(); i = i+1)
+        {//INICIO WHILE
+           if(s1.charAt(i) == s2.charAt(i))
+           {//Inicio IF
+             resp = true;
+           }else{//Fim IF 
+	     resp = false;
+	     i = s1.length();
+           } 
+        }//Fim WHILE
+     }//Fim IF
+     return(resp);
+  }
+  public static String cifraCesar (String s)
+  {
+     char h;
+     int k;	
+     String cifrada = "";
+     for(int i=0; i<s.length(); i = i+1){
+        h = s.charAt(i);
+        k = (int)h;
+        k = k-3;
+        h = (char)k;		
+        cifrada = cifrada + h; 
+     }//Fim FOR
+     return(cifrada);
+  }
+  public static void recurseMetod(String str)
+  {
+     if(!equalsMetod(str, "FIM")){ 
+         MyIO.println(cifraCesar(str)); 
+         str = MyIO.readLine();
+         recurseMetod(str);	
+     }//Fim WHILE
+  } // Fim main()
+  public static void main(String[] args)
+  {
+     String str = MyIO.readLine();
+     recurseMetod(str);
+  } // Fim main()
+} // Fim class

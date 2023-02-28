@@ -1,0 +1,174 @@
+class ATV10 
+{
+  public static boolean equalsMetod (String s1, String s2)
+  {
+     boolean resp = false;
+     if(s1.length() == s2.length())
+     {//Inicio IF
+        //Faz a contagem de maiuculas na string
+        for(int i = 0; i < s1.length(); i = i+1)
+        {//INICIO WHILE
+           if(s1.charAt(i) == s2.charAt(i))
+           {//Inicio IF
+             resp = true;
+           }else{//Fim IF 
+	     resp = false;
+	     i = s1.length();
+           } 
+        }//Fim WHILE
+     }//Fim IF
+     return(resp);
+  }
+  public static String toMaisc (String s)
+  { 
+     String str = "";
+     int k;
+     char help;
+     //Passa de char em char para fazer a verificação
+     for(int i = 0; i<s.length(); i++)
+     {//Inicio FOR
+	//Verifica se esta entre azinho e zezinho
+        if(s.charAt(i) >= 'a' && s.charAt(i) <= 'z')
+        {//Inicio IF
+          k = (int)s.charAt(i);
+          k = k-32;
+          help = (char)k;
+	//Verifica se é caracter especial
+        }else{
+          if(s.charAt(i) == 'ç'){//Inicio ELSE IF
+	    help = 'Ç';
+           }else if (s.charAt(i) == 'á'){//Inicio ELSE IF
+            help = 'Á';
+           }else if (s.charAt(i) == 'ã'){//Inicio ELSE IF
+            help = 'Ã';
+           }else if (s.charAt(i) == 'â'){//Inicio ELSE IF
+            help = 'Â';
+           }else if (s.charAt(i) == 'à'){//Inicio ELSE IF
+            help = 'À';
+           }else if (s.charAt(i) == 'å'){//Inicio ELSE IF
+            help = 'Å';
+           }else if (s.charAt(i) == 'é'){//Inicio ELSE IF
+            help = 'É';
+           }else if (s.charAt(i) == 'ê'){//Inicio ELSE IF
+            help = 'Ê';
+           }else if (s.charAt(i) == 'í'){//Inicio ELSE IF
+            help = 'Í';
+           }else if (s.charAt(i) == 'ì'){//Inicio ELSE IF
+            help = 'Ì';
+           }else if (s.charAt(i) == 'ô'){//Inicio ELSE IF
+            help = 'Ô';
+           }else if (s.charAt(i) == 'ó'){//Inicio ELSE IF
+            help = 'Ó';
+           }else if (s.charAt(i) == 'ò'){//Inicio ELSE IF
+            help = 'Ò';
+           }else if (s.charAt(i) == 'ø'){//Inicio ELSE IF
+            help = 'Ø';
+           }else if (s.charAt(i) == 'ú'){//Inicio ELSE IF
+            help = 'Ú';
+           }else if (s.charAt(i) == 'ù'){//Inicio ELSE IF
+            help = 'Ù';
+           }else{
+            help = s.charAt(i);
+           }//Fim ELSE
+	}//Fim ELse
+	str = str+help;
+     }//Fim FOR 
+     return(str);
+  }
+  public static String toMinusc (String s)
+  {
+     String str = "";
+     int k;
+     char help;
+     //Passa de char em char para fazer a verificação
+     for(int i = 0; i<s.length(); i++)
+     {//Inicio FOR
+	//Verifica se esta entre azão e zezão
+        if(s.charAt(i) >= 'A' && s.charAt(i) <= 'Z')
+        {//Inicio IF
+          k = (int)s.charAt(i);
+          k = k+32;
+          help = (char)k;
+	//Verifica se é caracter especial
+        }else{
+          if(s.charAt(i) == 'Ç'){//Inicio ELSE IF
+	    help = 'ç';
+           }else if (s.charAt(i) == 'Á'){//Inicio ELSE IF
+            help = 'á';
+           }else if (s.charAt(i) == 'Ã'){//Inicio ELSE IF
+            help = 'ã';
+           }else if (s.charAt(i) == 'Â'){//Inicio ELSE IF
+            help = 'â';
+           }else if (s.charAt(i) == 'À'){//Inicio ELSE IF
+            help = 'à';
+           }else if (s.charAt(i) == 'Å'){//Inicio ELSE IF
+            help = 'å';
+           }else if (s.charAt(i) == 'É'){//Inicio ELSE IF
+            help = 'é';
+           }else if (s.charAt(i) == 'Ê'){//Inicio ELSE IF
+            help = 'ê';
+           }else if (s.charAt(i) == 'Í'){//Inicio ELSE IF
+            help = 'í';
+           }else if (s.charAt(i) == 'Ì'){//Inicio ELSE IF
+            help = 'ì';
+           }else if (s.charAt(i) == 'Ô'){//Inicio ELSE IF
+            help = 'ô';
+           }else if (s.charAt(i) == 'Ó'){//Inicio ELSE IF
+            help = 'ó';
+           }else if (s.charAt(i) == 'Ò'){//Inicio ELSE IF
+            help = 'ò';
+           }else if (s.charAt(i) == 'Ø'){//Inicio ELSE IF
+            help = 'ø';
+           }else if (s.charAt(i) == 'Ú'){//Inicio ELSE IF
+            help = 'ú';
+           }else if (s.charAt(i) == 'Ù'){//Inicio ELSE IF
+            help = 'ù';
+           }else{
+            help = s.charAt(i);
+           }//Fim ELSE
+	}//Fim ELSE
+	str = str+help;
+     }//Fim FOR 
+     return(str);
+  }
+  public static String rmvSpc (String s)
+  {
+     String resp = "";
+     for(int i = 0; i<s.length(); i++){
+       if(s.charAt(i) != ' ')
+       {
+	 resp = resp + s.charAt(i);
+       }
+     }	 
+     return(resp);
+  }
+  public static String rmvFirstChar (String s)
+  {
+     char x = s.charAt(0);
+     String resp = "";
+     for(int i = 1; i<s.length(); i++){
+       if(s.charAt(i) != x)
+       {
+	 resp = resp + s.charAt(i);
+       }
+     }	 
+     return(resp);
+  }
+  public static void recurseMetod(String str)
+  {
+     if(!equalsMetod(str, "FIM")){ 
+	 
+         MyIO.println(toMaisc(str));
+         MyIO.println(toMinusc(str));
+         MyIO.println(rmvSpc(str));
+         MyIO.println(rmvFirstChar(str));
+	 str = MyIO.readLine();
+         recurseMetod(str);
+     }//Fim WHILE
+  } // Fim main()
+  public static void main(String[] args)
+  {
+     String str = MyIO.readLine();
+     recurseMetod(str);
+  } // Fim main()
+} // Fim class

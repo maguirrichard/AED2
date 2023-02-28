@@ -1,0 +1,64 @@
+import java.util.Random;
+class ATV5 
+{ 
+  public static boolean equalsMetod (String s1, String s2)
+  {
+     boolean resp = false;
+     if(s1.length() == s2.length())
+     {//Inicio IF
+        //Faz a contagem de maiuculas na string
+        for(int i = 0; i < s1.length(); i = i+1)
+        {//INICIO WHILE
+           if(s1.charAt(i) == s2.charAt(i))
+           {//Inicio IF
+             resp = true;
+           }else{//Fim IF 
+	     resp = false;
+	     i = s1.length();
+           } 
+        }//Fim WHILE
+     }//Fim IF
+     return(resp);
+  }
+  public static String mostrarSort (String s, char a, char b)
+  {
+     
+     char [] x = new char[2];
+     x[0] = a;
+     x[1] = b; 
+     String str = "";
+     for(int i = 0; i < s.length(); i++){
+        if(s.charAt(i) == x[0]){
+           str = str+x[1];
+        }else{
+           str = str+s.charAt(i);
+        }
+     }
+     return(str);
+  }
+  public static void recurseMetod(String str, char a, char b, Random gerador)
+  {
+     if(!equalsMetod(str, "FIM")){ 
+         MyIO.println(mostrarSort(str, a, b));
+         str = MyIO.readLine();
+         int h1 ='a' + Math.abs(gerador.nextInt()%26);
+         int h2 ='a' + Math.abs(gerador.nextInt()%26);
+         a = (char)h1;
+         b = (char)h2;
+         recurseMetod(str, a, b, gerador);
+	}//Fim WHILE
+       
+  } // Fim main()
+
+  public static void main(String[] args)
+  {
+     String str = MyIO.readLine();
+     Random gerador = new Random();
+     gerador.setSeed(4);
+     int h1 ='a' + Math.abs(gerador.nextInt()%26);
+     int h2 ='a' + Math.abs(gerador.nextInt()%26);
+     char a = (char)h1;
+     char b = (char)h2;
+     recurseMetod(str, a, b, gerador);
+  } // Fim main()
+} // Fim class

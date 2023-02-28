@@ -1,0 +1,53 @@
+class ATV1 
+{
+  public static boolean equalsMetod (String s1, String s2)
+  {
+     boolean resp = false;
+     if(s1.length() == s2.length())
+     {//Inicio IF
+        //Faz a contagem de maiuculas na string
+        for(int i = 0; i < s1.length(); i = i+1)
+        {//INICIO WHILE
+           if(s1.charAt(i) == s2.charAt(i))
+           {//Inicio IF
+             resp = true;
+           }else{//Fim IF 
+	     resp = false;
+	     i = s1.length();
+           } 
+        }//Fim WHILE
+     }//Fim IF
+     return(resp);
+  }
+  public static String invertPalavra (String s)
+  {
+     String resp = "";
+     int j = s.length();	
+     for(int i=0; i<j; i = i+1){
+         resp = resp + s.charAt(j-(i+1)); 
+     }//Fim FOR
+     return(resp);
+  }
+  public static void recurseMetod (String str)
+  {
+     String help;
+     if(!equalsMetod(str, "FIM")){ 
+         //Comparação entre as strings  
+         help = invertPalavra(str);
+         if(equalsMetod(str, help)){
+	    MyIO.println("SIM"); 
+         }else{
+	    MyIO.println("NAO"); 
+         }//Fim IF 
+
+         str = MyIO.readLine();
+	 recurseMetod(str);
+	}//Fim WHILE
+  }
+  public static void main(String[] args)
+  {
+     //Ler o arquivo texto
+     String str = MyIO.readLine();
+     recurseMetod(str);  
+  } // Fim main()
+} // Fim class

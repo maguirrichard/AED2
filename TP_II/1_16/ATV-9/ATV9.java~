@@ -1,0 +1,132 @@
+class ATV9 
+{
+  public static boolean equalsMetod (String s1, String s2)
+  {
+     boolean resp = false;
+     if(s1.length() == s2.length())
+     {//Inicio IF
+        //Faz a contagem de maiuculas na string
+        for(int i = 0; i < s1.length(); i = i+1)
+        {//INICIO WHILE
+           if(s1.charAt(i) == s2.charAt(i))
+           {//Inicio IF
+             resp = true;
+           }else{//Fim IF 
+	     resp = false;
+	     i = s1.length();
+           } 
+        }//Fim WHILE
+     }//Fim IF
+     return(resp);
+  }
+  public static String isVogal (String s)
+  {
+     String resp = "";
+     int cont = 0;
+     for(int i = 0; i<s.length(); i++){
+       if(s.charAt(i) == 'a' || s.charAt(i) == 'A' ||
+          s.charAt(i) == 'e' || s.charAt(i) == 'E' ||
+          s.charAt(i) == 'i' || s.charAt(i) == 'I' ||
+          s.charAt(i) == 'o' || s.charAt(i) == 'O' ||
+          s.charAt(i) == 'u' || s.charAt(i) == 'U')
+       {
+	 cont = cont+1;
+       }//Fim IF
+     }//Fim FOR	 
+     if(cont == s.length())
+     {   
+         resp = "SIM";  
+     }else{
+         resp = "NAO";
+     }
+     return(resp);
+  }
+  public static String isConsoante (String s)
+  {
+     String resp = "";
+     int cont = 0;
+     for(int i = 0; i<s.length(); i++){
+       if(s.charAt(i) >= 'a' && s.charAt(i) <= 'z' ||
+          s.charAt(i) >= 'A' && s.charAt(i) <= 'Z')
+       {
+          if(s.charAt(i) != 'a' && s.charAt(i) != 'A' &&
+             s.charAt(i) != 'e' && s.charAt(i) != 'E' &&
+             s.charAt(i) != 'i' && s.charAt(i) != 'I' &&
+             s.charAt(i) != 'o' && s.charAt(i) != 'O' &&
+             s.charAt(i) != 'u' && s.charAt(i) != 'U')
+          {
+	    cont = cont+1;
+          }//Fim IF
+       }//Fim IF
+     }//Fim FOR	 
+     if(cont == s.length())
+     {   
+         resp = "SIM";  
+     }else{
+         resp = "NAO";
+     }
+     return(resp);
+  }
+  public static String isInt (String s)
+  {
+     String resp = "";
+     int cont = 0;
+     for(int i = 0; i<s.length(); i++){
+       if((int)s.charAt(i) >= 48 && (int)s.charAt(i) <= 57)
+       {
+	 cont = cont+1;
+       }
+     }	 
+     if(cont == s.length())
+     {   
+         resp = "SIM";  
+     }else{
+         resp = "NAO";
+     }
+     return(resp);
+  }
+  public static String isReal (String s)
+  {
+     String resp = "";
+     int cont = 0;
+     int cont2 = 0;
+     for(int i = 0; i<s.length(); i++){
+       if((int)s.charAt(i) == 44 || (int)s.charAt(i) == 46)
+       {
+	 cont = cont+1;
+       }
+     }
+     if(cont > 1){
+            resp = "NAO";
+     }else{
+        for(int i = 0; i<s.length(); i++){
+          if((int)s.charAt(i) >= 48 && (int)s.charAt(i) <= 57||
+             (int)s.charAt(i) == 44 || (int)s.charAt(i) == 46)
+          {
+	    cont2 = cont2+1;
+          }
+        }	 
+        if(cont2 == s.length())
+        {   
+            resp = "SIM";  
+        }else{
+            resp = "NAO";
+        }
+     }
+     return(resp);
+  }
+  public static void recurseMetod(String str)
+  {
+     if(!equalsMetod(str, "FIM")){ 
+	 
+         MyIO.println(isVogal(str) + " " + isConsoante(str) + " " + isInt(str) +                      " " + isReal(str));
+	 str = MyIO.readLine();
+	 recurseMetod(str); 
+     }//Fim WHILE
+  } // Fim main()
+  public static void main(String[] args)
+  {
+     String str = MyIO.readLine();
+     recurseMetod(str);
+  } // Fim main()
+} // Fim class
